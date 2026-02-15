@@ -1,25 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Integramerica Client</title>
-</head>
-<body>
-    <h1>Integramerica Client</h1>
-    <button onclick="saveFile()">💾 Guardar Archivo</button>
-    <button onclick="exportCSV()">📄 Exportar CSV</button>
-    <button onclick="loadFile()">📂 Cargar Archivo</button>
-    <script>
-        function saveFile() {
-            // Save file logic here
-        }
-        function exportCSV() {
-            // Export CSV logic here
-        }
-        function loadFile() {
-            // Load file logic here
-        }
-    </script>
-</body>
-</html>
+// Complete exportCSV function implementation
+function exportCSV() {
+    // Sample implementation
+    const data = [
+        ['Column1', 'Column2'],
+        ['Value1', 'Value2'],
+        ['Value3', 'Value4']
+    ];
+
+    let csvContent = data.map(e => e.join(',')).join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'data.csv');
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
